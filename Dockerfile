@@ -1,4 +1,5 @@
 FROM openjdk:8-jre-alpine
 EXPOSE 8090
-ADD /target/Test.jar Test.jar
-ENTRYPOINT ["java","-jar","Test.jar"]
+COPY /var/lib/jenkins/workspace/PullBuildAndPublish/Test.war /var/lib/docker/tmp/
+WORKDIR /var/lib/docker/tmp/
+ENTRYPOINT ["java","-jar","Test.war"]
