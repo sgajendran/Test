@@ -6,4 +6,7 @@ RUN mvn package
  
 #FROM tomcat:9.0-jre8-alpine
 #COPY --from=MAVEN_TOOL_CHAIN /tmp/target/Test.war $CATALINA_HOME/webapps/wizard.war
-COPY --from=MAVEN_TOOL_CHAIN /tmp/target/Test.war Test.war
+#COPY --from=MAVEN_TOOL_CHAIN /tmp/target/Test.war Test.war
+ 
+FROM tomcat:9.0-jre8-alpine
+COPY --from=MAVEN_TOOL_CHAIN /tmp/target/Test*.war $CATALINA_HOME/webapps/Test.war
